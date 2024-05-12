@@ -1,0 +1,69 @@
+<app-title custom-title="Defer Views / Blocs" />
+
+
+<section class="grid grid-cols-1">
+
+  <!--
+  defer my similar a  suspense de react, en lugar de cargar el componente de una vez, lo carga de forma diferida,
+  el defer se puede usar en 3 formas, on idle, on viewport y sin parametro, el cual carga el componente de forma diferida,
+  basado en el evento que de le indigue
+
+  - idle: carga el componente cuando el navegador esta en unb estado incativo conocido como idle
+  - viewPort: carga el componente este entra en la vista del viewport
+  - interaction: Se dispara cuando el usuario interactúa con un elemento específico mediante un click o keydown
+  - hover: Se dispara cuando el mouse pasa sobre el elemento o la referencia.
+  - immediate: Se dispara tan pronto el cliente termina de renderizar la pantalla.
+  - timer: Se dispara después de cierta duración de tiempo en MS milliseconds.
+
+ -->
+  @defer () {
+  <app-heavy-loaders-slow cssClass="bg-blue-500" />
+  }
+
+  @placeholder {
+  <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+    Cargando...
+  </p>
+  }
+
+  @defer (on idle) {
+  <app-heavy-loaders-slow cssClass="bg-green-500" />
+  }
+
+  @placeholder {
+  <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+    Cargando...
+  </p>
+  }
+
+  @defer (on viewport) {
+  <app-heavy-loaders-slow cssClass="bg-purple-500" />
+  }
+
+  @placeholder {
+  <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+    Cargando...
+  </p>
+  }
+  @defer (on interaction) {
+  <app-heavy-loaders-slow cssClass="bg-green-500" />
+  }
+
+  @placeholder {
+  <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+    Cargando...
+  </p>
+  }
+  @defer (on hover) {
+  <app-heavy-loaders-slow cssClass="bg-blue-500" />
+  }
+
+  @placeholder {
+  <p class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+    Cargando...
+  </p>
+  }
+
+
+
+</section>
